@@ -1,0 +1,7 @@
+# Generate github key
+ssh-keygen -t ed25519 -C "DallasHamlin"
+cat $HOME/.ssh/id_ed25519.pub
+
+# Legacy systems
+ssh-keygen -t rsa -b 2048 -C "DallasHamlin"
+cat $HOME/.ssh/id_rsa_personal.pub

@@ -1,0 +1,94 @@
+[alias]
+    # log related
+    lg      = log --graph --pretty='format:%C(red)%d%C(reset) %C(yellow)%h%C(reset) %C(cyan)%ar%C(reset) %C(magenta)%aN%C(reset) %s' --abbrev-commit
+    lg5     = log --graph --pretty='format:%C(red)%d%C(reset) %C(yellow)%h%C(reset) %C(cyan)%ar%C(reset) %C(magenta)%aN%C(reset) %s' --abbrev-commit -n 5 
+    lg10    = log --graph --pretty='format:%C(red)%d%C(reset) %C(yellow)%h%C(reset) %C(cyan)%ar%C(reset) %C(magenta)%aN%C(reset) %s' --abbrev-commit -n 10
+    last    = log --graph --pretty='format:%C(red)%d%C(reset) %C(yellow)%h%C(reset) %C(cyan)%ar%C(reset) %C(magenta)%aN%C(reset) %n%s' --abbrev-commit -n 1
+
+    lg-ns   = log --graph --pretty='format:%C(red)%d%C(reset) %C(yellow)%h%C(reset) %C(cyan)%ar%C(reset) %C(magenta)%aN%C(reset) %s' --abbrev-commit --name-status
+    lg5-ns  = log --graph --pretty='format:%C(red)%d%C(reset) %C(yellow)%h%C(reset) %C(cyan)%ar%C(reset) %C(magenta)%aN%C(reset) %s' --abbrev-commit -n 5 --name-status
+    lg10-ns = log --graph --pretty='format:%C(red)%d%C(reset) %C(yellow)%h%C(reset) %C(cyan)%ar%C(reset) %C(magenta)%aN%C(reset) %s' --abbrev-commit -n 10 --name-status
+    last-ns = log --graph --pretty='format:%C(red)%d%C(reset) %C(yellow)%h%C(reset) %C(cyan)%ar%C(reset) %C(magenta)%aN%C(reset) %n%s' --abbrev-commit -n 1 --name-status
+
+    # branches
+    b       = branch
+    bd      = branch -d
+    bD      = branch -D
+    bvv     = branch -vv
+    co      = checkout
+    cob     = checkout -b
+    ball    = branch --all
+
+    # upstream branch
+    # set the upstream branch to an already created remote branch. 'git bu origin/branch_name'
+    bu      = branch -u
+    # create and set upstream remote branch. Just type branch name
+    pub     = push -u origin 
+
+    # commits
+    #undo = reset HEAD~1 --mixed
+    undo    = reset HEAD~1 --soft
+    ac      = !git add . && git commit -am
+    cam     = commit -am
+    cm      = commit -m
+    rc      = rebase --continue
+    rs      = rebase --skip
+    ra      = rebase --abort
+
+    # rebase / fetch / push / pull
+    up      = !git fetch --all && git rebase origin/master
+    fall    = fetch --all
+    fpush   = push --force
+    upm     = !git checkout master && git fetch --all && git pull && git checkout -
+    fprune  = fetch --all --prune
+    pall    = !git fetch --all && git pull
+
+    # general
+    st      = status -sb --untracked-files=no
+    stu     = status -sb
+    stat    = status --untracked-files=no
+    status  = status --untracked-files=normal
+    ignored = ls-files --others -i --exclude-standard
+
+    # misc
+    rank    = shortlog -sn --no-merges
+    ec      = config --global -e
+
+    # show different files between current branch and origin
+    fdiff   = diff --name-status origin
+    fidiff  = difftool origin --
+
+    # diff
+    d       = diff
+    dc      = diff --cached
+
+    # clone
+
+[core]
+	editor = ~/miniconda3/bin/vim
+
+[diff]
+    tool    = vimdiff
+
+[difftool]
+    prompt  = false
+
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = auto
+    ui = true
+    pager = true
+
+[pull]
+	rebase = false
+
+[push]
+	default = simple
+
+[filter "gitignore"]
+	clean = sed "/#gitignore$/d"
+	smudge = cat
+[user]
+[user]
