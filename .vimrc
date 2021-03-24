@@ -105,11 +105,9 @@ let g:airline_powerline_fonts = 1
 
 " Fugitive
 set previewheight=100
-nnoremap <leader>g   :Git <CR>
-nnoremap <leader>o   :only <CR>
+nnoremap <leader>gs  :Git<CR>:only<CR>
 nnoremap <leader>gp  :Git push <CR>
 nnoremap <leader>gf  :Git fetch -p <CR>
-nnoremap <leader>gs  :Git <CR> :only <CR>
 nnoremap <leader>gl  :Git log <CR> :only <CR>
 nnoremap <leader>go  :Git log -p % <CR>
 " nnoremap <leader>gd  :BranchCalcOverride <CR> :Gvdiffsplit!<C-R>d
