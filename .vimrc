@@ -129,7 +129,7 @@ let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
 let &t_TI = ""
 let &t_TE = ""
 set termguicolors
-set background=light
+set background=dark
 
 " Change current line number color in normal mode
 highlight CursorLineNr term=bold ctermfg=Yellow gui=bold guifg=Yellow
