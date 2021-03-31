@@ -73,14 +73,17 @@ fi
 #------------------------------------------------------------------------------#
 #                                   git setup                                  #
 #------------------------------------------------------------------------------#
-git config --global user.name "DallasHamlin"
-git config --global user.email "DallasHamlin@users.noreply.github.com"
-sed -i 's/DallasHamlin$/DallasHamlin #gitignore/g' ~/dotfiles/.bashrc
-sed -i 's/github.com$/github.com #gitignore/g' ~/dotfiles/.bashrc
+if [ ${USER} != "dhamlin1" ]; then
+    git config --global user.name "DallasHamlin"
+    git config --global user.email "DallasHamlin@users.noreply.github.com"
+else
+    sed -i 's/\.com$/\.com #gitignore/g' ~/dotfiles/.gitconfig
+fi
 
 #------------------------------------------------------------------------------#
 #                                   vim setup                                  #
 #------------------------------------------------------------------------------#
+cd $HOME
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +PlugInstall +qall
