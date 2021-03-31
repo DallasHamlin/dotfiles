@@ -6,5 +6,6 @@ if [ -f ~/.bashrc ]; then
 fi
 
 PATH=$PATH:$HOME/.local/bin:$HOME/bin
-
 export PATH
+
+export TERM="xterm-256color"
