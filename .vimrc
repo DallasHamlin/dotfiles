@@ -277,10 +277,7 @@ nnoremap <leader>s :e ~/.vimrc<CR>
 "                                    vimdiff                                   "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 if &diff
-    map ] ]c
-    map [ [c
     syntax off
-
     " enable to ignore whitespace
     " set diffopt+=iwhite
 
