@@ -78,6 +78,7 @@ if [ ${USER} != "dhamlin1" ]; then
     git config --global user.email "DallasHamlin@users.noreply.github.com"
 else
     sed -i 's/\.com$/\.com #gitignore/g' ~/dotfiles/.gitconfig
+    sed -i 's/\.git$/\.git #gitignore/g' ~/dotfiles/.gitconfig
 fi
 
 #------------------------------------------------------------------------------#
