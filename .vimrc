@@ -29,6 +29,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
 Plug 'sjl/badwolf'
+Plug 'challenger-deep-theme/vim'
 call plug#end()
 
 " Smoothie
@@ -141,9 +142,10 @@ let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_hls_cursor = 'purple'
 " colorscheme gruvbox
 
-colorscheme badwolf
+" colorscheme badwolf
 let g:badwolf_darkgutter = 1
 
+colorscheme challenger_deep
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                    General                                   "
