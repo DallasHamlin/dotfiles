@@ -28,14 +28,15 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'tpope/vim-fugitive'
 Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
+Plug 'sjl/badwolf'
 call plug#end()
 
 " Smoothie
 " let g:smoothie_enabled = 0
-let g:smoothie_update_interval = 40
-let g:smoothie_speed_constant_factor = 15
-let g:smoothie_speed_linear_factor = 15
-let g:smoothie_speed_exponentiation_factor = 0.9
+" let g:smoothie_update_interval = 40
+" let g:smoothie_speed_constant_factor = 15
+" let g:smoothie_speed_linear_factor = 15
+" let g:smoothie_speed_exponentiation_factor = 0.9
 
 " Vim plug
 nnoremap <leader>pi :PlugInstall<CR>
@@ -132,13 +133,17 @@ set termguicolors
 set background=dark
 
 " Change current line number color in normal mode
-highlight CursorLineNr term=bold ctermfg=Yellow gui=bold guifg=Yellow
+" highlight CursorLineNr term=bold ctermfg=Yellow gui=bold guifg=Yellow
 
 " Gruvbox
 let g:gruvbox_contrast_light = 'soft'
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_hls_cursor = 'purple'
-colorscheme gruvbox
+" colorscheme gruvbox
+
+colorscheme badwolf
+let g:badwolf_darkgutter = 1
+
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                    General                                   "
