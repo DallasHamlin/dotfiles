@@ -28,7 +28,7 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'tpope/vim-fugitive'
 Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
-Plug 'pineapplegiant/spaceduck'
+Plug 'challenger-deep-theme/vim'
 call plug#end()
 
 " Smoothie
@@ -135,14 +135,13 @@ set background=dark
 " Change current line number color in normal mode
 highlight CursorLineNr term=bold ctermfg=Yellow gui=bold guifg=Yellow
 
-" Spaceduck
-colorscheme spaceduck
-
 " Gruvbox
 let g:gruvbox_contrast_light = 'soft'
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_hls_cursor = 'purple'
 " colorscheme gruvbox
+
+colorscheme challenger_deep
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                    General                                   "
