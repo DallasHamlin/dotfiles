@@ -139,7 +139,7 @@ highlight CursorLineNr term=bold ctermfg=Yellow gui=bold guifg=Yellow
 let g:gruvbox_contrast_light = 'soft'
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_hls_cursor = 'purple'
-" colorscheme gruvbox
+colorscheme gruvbox
 
 colorscheme challenger_deep
 
