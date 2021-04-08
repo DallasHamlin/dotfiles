@@ -14,7 +14,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/vim-easy-align'
-Plug 'psliwka/vim-smoothie'
 " Plug 'camspiers/animate.vim'
 " Plug 'camspiers/lens.vim'
 Plug 'cometsong/CommentFrame.vim'
@@ -28,16 +27,7 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'tpope/vim-fugitive'
 Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
-Plug 'sjl/badwolf'
-Plug 'challenger-deep-theme/vim'
 call plug#end()
-
-" Smoothie
-" let g:smoothie_enabled = 0
-" let g:smoothie_update_interval = 40
-" let g:smoothie_speed_constant_factor = 15
-" let g:smoothie_speed_linear_factor = 15
-" let g:smoothie_speed_exponentiation_factor = 0.9
 
 " Vim plug
 nnoremap <leader>pi :PlugInstall<CR>
@@ -78,7 +68,7 @@ let g:fzf_action = {
   \ }
 
 " NerdTree
-nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>ne :NERDTreeToggle<CR>
 " enable these two to automatically enable NerdTree upon entering a vim file
 " autocmd vimenter * NERDTree
 " autocmd vimenter * wincmd p
@@ -108,7 +98,7 @@ let g:airline_powerline_fonts = 1
 " Fugitive
 set previewheight=100
 nnoremap <leader>gs  :Git<CR>:only<CR>
-nnoremap <leader>gp  :Git push <CR>
+nnoremap <leader>gp  :Git push <CR><CR>
 nnoremap <leader>gf  :Git fetch -p <CR>
 nnoremap <leader>gl  :Git log <CR> :only <CR>
 nnoremap <leader>go  :Git log -p % <CR>
@@ -140,12 +130,12 @@ set background=dark
 let g:gruvbox_contrast_light = 'soft'
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_hls_cursor = 'purple'
-" colorscheme gruvbox
+colorscheme gruvbox
 
 " colorscheme badwolf
 let g:badwolf_darkgutter = 1
 
-colorscheme challenger_deep
+" colorscheme challenger_deep
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                    General                                   "
