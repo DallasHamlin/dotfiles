@@ -47,9 +47,9 @@ alias cpr="cp -r"
 alias rmr="rm -r"
 alias rmrf="rm -rf"
 alias pwdf="readlink -f"
-function cdl() 
+function cd() 
 { 
-    cd "$@" && ls 
+    builtin cd "$@" && ls 
 }
 mcdir ()
 { 
