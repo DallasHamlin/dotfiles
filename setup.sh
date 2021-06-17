@@ -93,21 +93,26 @@ sed -i 's/ni/n/g' $HOME/.vim/plugged/CommentFrame.vim/plugin/CommentFrame.vim
 #------------------------------------------------------------------------------#
 #                                miniconda setup                               #
 #------------------------------------------------------------------------------#
-if [ ! -d $HOME/miniconda3 ]
-then
-    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-    chmod u+x Miniconda3-latest-Linux-x86_64.sh
-    ~/dotfiles/Miniconda3-latest-Linux-x86_64.sh
-    export PATH=$HOME/miniconda3/bin:$PATH
-fi
+#if [ ! -d $HOME/miniconda3 ]
+#then
+#    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+#    chmod u+x Miniconda3-latest-Linux-x86_64.sh
+#    ~/dotfiles/Miniconda3-latest-Linux-x86_64.sh
+#    export PATH=$HOME/miniconda3/bin:$PATH
+#fi
+#
+#cd $HOME
 
-cd $HOME
-conda install -c conda-forge vim
-conda install -c conda-forge git
-conda install -c conda-forge htop
-conda install -c conda-forge tmux
-conda install -c conda-forge bash
-conda install -c conda-forge pip
+# packages needed, probs could just 'sudo apt install pgk_name'
+#conda install -c conda-forge zathura
+#conda install -c conda-forge curl
+#conda install -c conda-forge latexmk
+#conda install -c conda-forge vim
+#conda install -c conda-forge git
+#conda install -c conda-forge htop
+#conda install -c conda-forge tmux
+#conda install -c conda-forge bash
+#conda install -c conda-forge pip
 
 #------------------------------------------------------------------------------#
 #                                     work                                     #
