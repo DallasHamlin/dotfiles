@@ -91,6 +91,7 @@
 	clean = sed "/#gitignore$/d"
 	smudge = cat
 [user]
-	name = dhamlin1
+	name = DallasHamlin
+	email = DallasHamlin@users.noreply.github.com
 [status]
 	showUntrackedFiles = no

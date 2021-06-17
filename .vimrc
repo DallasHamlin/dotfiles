@@ -1,9 +1,11 @@
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                  Initialize                                  "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-let mapleader=" "
+syntax enable               "enable syntax highlighting
+let mapleader=" "           "space as leader
 set nocompatible
-filetype plugin indent on
+filetype plugin indent on   "load plugin and indent files
+
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                    Plugins                                   "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
@@ -27,6 +29,10 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'tpope/vim-fugitive'
 Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
+Plug 'chriskempson/base16-vim'
+Plug 'tpope/vim-unimpaired'
+Plug 'lervag/vimtex'
+Plug 'SirVer/ultisnips'
 call plug#end()
 
 " Vim plug
@@ -111,6 +117,18 @@ nnoremap <leader>go  :Git log -p % <CR>
 nnoremap <leader>gdh  :diffget //2 <CR>
 nnoremap <leader>gdl  :diffget //3 <CR>
 
+" Vimtex
+let g:vimtex_view_general_viewer="zathura"
+let g:tex_flavor="latex"
+" let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+" ultisnips
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                    Colors                                    "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
@@ -130,20 +148,51 @@ set background=dark
 let g:gruvbox_contrast_light = 'soft'
 let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_hls_cursor = 'purple'
-colorscheme gruvbox
+" colorscheme gruvbox
 
-" colorscheme badwolf
-let g:badwolf_darkgutter = 1
-
-" colorscheme challenger_deep
+" Summerfruit
+let base16colorspace=256
+colorscheme base16-summerfruit-dark
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                    General                                   "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-syntax enable
+" General
+set wildmenu        "shows tab completion options in status bar
+set number          "line number
+set belloff=all     "disable bell sound
+set encoding=utf-8  "common encoding option
+set equalalways     "windows are made the same size after splitting
+set ttyfast         "improves rendering
+set splitright      "splits a window to right of current one by default
+set splitbelow      "splits a window below current one by default
 
-" show and color line number 
-set number
+" Whitespace
+set wrap            "Allows lines to wrap
+set tabstop=4       "Number of spaces that a Tab in the file counts for
+set shiftwidth=4    "Number of spaces to use for each step of autoindent (<< or >> in normal mode)
+set softtabstop=4   "Number of spaces that a Tab counts for while editing
+set expandtab       "Tabs will expand to whitespace characters
+set hidden          "hides buffer instead of closing it
+
+" Status line
+set showmode        "shows mode in status line
+set showcmd         "shows cmd in on the last line
+set ruler           "show cursor position in the status bar
+
+" Searching
+set hlsearch        "highlights all search patterns
+"highlight Search ctermbg=LightYellow ctermfg=Black
+set incsearch       "shows what matches as you type the phrase to be searched
+set ignorecase      "case insensitive search (use '\C' for case sensitive)
+set smartcase       "overrides ignorecase if capital letters present
+set showmatch       "shows matching bracket when bracket is inserted
+
+" Cursor motion
+set scrolloff=3                 "min num of screen lines to keep above and below the cursor        
+set backspace=indent,eol,start  "allow backspacing over everything in insert mode
+
+" color the line number
 "highlight LineNr term=bold cterm=NONE ctermfg=blue ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
 " Show relative line numbers in normal mode
@@ -154,44 +203,10 @@ augroup numbertoggle
     autocmd BufEnter,FocusGained,InsertLeave * if &nu | set relativenumber | endif           
 augroup END
 
-set ruler
-set belloff=all
-set encoding=utf-8
-set noea
-
-" Whitespace
-set wrap
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set noshiftround
-
-" Cursor motion
-set scrolloff=3
-set backspace=indent,eol,start
-
-" Allow hidden buffers
-set hidden
-
-" Rendering
-set ttyfast
-
-" Last line
-set showmode
-set showcmd
-
-" Searching
-set hlsearch
-"highlight Search ctermbg=LightYellow ctermfg=Black
-set incsearch
-set ignorecase
-set smartcase
-set showmatch
-
 " Formatting
+" Prevents vim from creating new lines starting with a comment
 set formatoptions=qn1
-au FileType * setlocal formatoptions-=r formatoptions-=c formatoptions-=o
+au FileType * set formatoptions-=r formatoptions-=c formatoptions-=o
 set autoindent
 set smartindent
 
@@ -201,10 +216,6 @@ if has("autocmd")
         \| exe "normal! g'\"" | endif
 endif
 
-" if lens and animate commented
-set ea
-set splitright
-set splitbelow
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                   Keybinds                                   "
