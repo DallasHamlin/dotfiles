@@ -128,6 +128,8 @@ let g:tex_conceal='abdmg'
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+let g:UltiSnipsEditSplit = "vertical"
+let g:UltiSnipsSnippetDirectories = [$HOME.'/dotfiles/UltiSnips']
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                    Colors                                    "
@@ -280,6 +282,10 @@ nnoremap <leader>b9 :b9<CR>
 " vimrc
 nnoremap <leader>r :source ~/.vimrc<CR>
 nnoremap <leader>s :e ~/.vimrc<CR>
+
+" ultisnips
+nnoremap <leader>ua :UltiSnipsEdit all<CR>
+nnoremap <leader>ul :UltiSnipsEdit tex<CR>
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                    vimdiff                                   "
