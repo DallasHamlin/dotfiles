@@ -116,6 +116,7 @@ nnoremap <leader>go  :Git log -p % <CR>
 " Note that Vim-Fugitive uses //2 and //3 for 3-way diff puts/gets
 nnoremap <leader>gdh  :diffget //2 <CR>
 nnoremap <leader>gdl  :diffget //3 <CR>
+au! BufEnter COMMIT_EDITMSG exec 'norm gg' | startinsert!
 
 " Vimtex
 let g:vimtex_view_general_viewer="zathura"
@@ -157,8 +158,6 @@ let g:gruvbox_hls_cursor = 'purple'
 " Summerfruit
 let base16colorspace=256
 colorscheme base16-summerfruit-dark
-
-au! BufEnter COMMIT_EDITMSG exec 'norm gg' | startinsert!
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                    General                                   "
