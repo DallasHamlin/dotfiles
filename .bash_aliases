@@ -51,7 +51,7 @@ function cd()
 { 
     builtin cd "$@" && ls 
 }
-mcdir ()
+function mcdir()
 { 
     mkdir -p -- "$1" && 
     cd -P -- "$1" 
@@ -81,7 +81,13 @@ alias tmux="tmux new-session \; send-keys 'clear' C-m"
 
 # Git
 alias gitconfig='vim ~/.gitconfig'
-alias gs='vim +Gstatus +only'
+alias gs='vim +Git +only'
+function gsu()
+{
+    git config --local status.showUntrackedFiles all &&
+    vim +Git +only &&
+    git config --local status.showUntrackedFiles no
+}
 
 # Python
 alias py='python'

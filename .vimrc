@@ -120,9 +120,11 @@ nnoremap <leader>gdl  :diffget //3 <CR>
 " Vimtex
 let g:vimtex_view_general_viewer="zathura"
 let g:tex_flavor="latex"
-" let g:vimtex_quickfix_mode=0
-set conceallevel=1
+let g:vimtex_quickfix_mode=2
 let g:tex_conceal='abdmg'
+set conceallevel=2
+let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
+let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
 
 " ultisnips
 let g:UltiSnipsExpandTrigger = '<tab>'
@@ -155,6 +157,8 @@ let g:gruvbox_hls_cursor = 'purple'
 " Summerfruit
 let base16colorspace=256
 colorscheme base16-summerfruit-dark
+
+au! BufEnter COMMIT_EDITMSG exec 'norm gg' | startinsert!
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                    General                                   "
