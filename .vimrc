@@ -12,8 +12,7 @@ filetype plugin indent on   "load plugin and indent files
 call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/vim-easy-align'
 " Plug 'camspiers/animate.vim'
@@ -34,6 +33,21 @@ Plug 'tpope/vim-unimpaired'
 Plug 'lervag/vimtex'
 Plug 'SirVer/ultisnips'
 call plug#end()
+
+" Lightline
+set laststatus=2
+
+let g:lightline = {
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \           [ 'gitbranch', 'filename', 'modified' ] ],
+    \   'right': [ [ 'lineinfo', 'percent' ] ]
+    \ },
+    \ 'component_function': {
+    \   'gitbranch': 'FugitiveHead'
+    \ },
+    \ 'colorscheme': 'molokai'
+    \ }
 
 " Vim plug
 nnoremap <leader>pi :PlugInstall<CR>
@@ -82,25 +96,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 "let NERDTreeMinimalUI = 1
 "let NERDTreeDirArrows = 1
 
-" Airline
-let g:airline_extensions = []
-let g:airline#extensions#searchcount#enabled = 0
-let g:airline_section_b=''                              " disable git branch
-let g:airline#extensions#whitespace#enabled = 0         " disable last section
-silent! call airline#extensions#whitespace#disable()    " disable last section
-let g:airline#extensions#hunks#enabled=0                " disable changed hunks
-let g:airline#extensions#branch#enabled=1               " show git branch
-let g:airline_section_y=''                              " skip encoding section
-let g:airline_skip_empty_sections=1                     " skip empty sections
-let g:airline#extensions#tabline#enabled=1              " enable tab/buffer line
-let g:airline#extensions#tabline#show_close_button=0    " hide close button
-let g:airline#extensions#tabline#tabs_label=''          " remove tabs label
-let g:airline#extensions#tabline#buffers_label=''       " remove buffer label
-let g:airline#extensions#tabline#fnamemod=':t'          " remove paths to files
-let g:airline#extensions#tabline#tab_min_count=2        " 2 tabs to enable
-let g:airline#extensions#tabline#buffer_min_count=2     " 2 bufs to enable
-let g:airline_powerline_fonts = 1
-
 " Fugitive
 set previewheight=100
 nnoremap <leader>gs  :Git<CR>:only<CR>
@@ -133,6 +128,8 @@ let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 let g:UltiSnipsEditSplit = "vertical"
 let g:UltiSnipsSnippetDirectories = [$HOME.'/dotfiles/UltiSnips']
+nnoremap <leader>ua :UltiSnipsEdit all<CR>
+nnoremap <leader>ul :UltiSnipsEdit tex<CR>
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                    Colors                                    "
@@ -147,7 +144,7 @@ set termguicolors
 set background=dark
 
 " Change current line number color in normal mode
-" highlight CursorLineNr term=bold ctermfg=Yellow gui=bold guifg=Yellow
+highlight CursorLineNr term=bold ctermfg=Yellow gui=bold guifg=Yellow
 
 " Gruvbox
 let g:gruvbox_contrast_light = 'soft'
@@ -221,7 +218,6 @@ if has("autocmd")
         \| exe "normal! g'\"" | endif
 endif
 
-
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                   Keybinds                                   "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
@@ -271,6 +267,7 @@ nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bp :bp<CR>
 nnoremap <leader>bd :bd<CR>
 nnoremap <leader>b! :bd!<CR>
+nnoremap <leader>bl :ls<CR>
 
 nnoremap <leader>b1 :b1<CR>
 nnoremap <leader>b2 :b2<CR>
@@ -286,10 +283,6 @@ nnoremap <leader>b9 :b9<CR>
 nnoremap <leader>r :source ~/.vimrc<CR>
 nnoremap <leader>s :e ~/.vimrc<CR>
 
-" ultisnips
-nnoremap <leader>ua :UltiSnipsEdit all<CR>
-nnoremap <leader>ul :UltiSnipsEdit tex<CR>
-
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                    vimdiff                                   "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
@@ -298,9 +291,9 @@ if &diff
     " enable to ignore whitespace
     " set diffopt+=iwhite
 
-    " vimdiff colors
-    hi DiffAdd      ctermfg=White   ctermbg=Brown
-    hi DiffChange   ctermfg=NONE    ctermbg=NONE
-    hi DiffDelete   ctermfg=NONE    ctermbg=DarkMagenta
-    hi DiffText     ctermfg=White   ctermbg=DarkRed
+    " vimdiff colors - good for gruvbox
+    " hi DiffAdd      ctermfg=White   ctermbg=Brown
+    " hi DiffChange   ctermfg=NONE    ctermbg=NONE
+    " hi DiffDelete   ctermfg=NONE    ctermbg=DarkMagenta
+    " hi DiffText     ctermfg=White   ctermbg=DarkRed
 endif
