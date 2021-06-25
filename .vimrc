@@ -15,15 +15,11 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'itchyny/lightline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/vim-easy-align'
-" Plug 'camspiers/animate.vim'
-" Plug 'camspiers/lens.vim'
 Plug 'cometsong/CommentFrame.vim'
 Plug 'zhou13/vim-easyescape'
 Plug 'morhetz/gruvbox'
 Plug 'lifepillar/vim-mucomplete'
-" Plug 'RRethy/vim-illuminate'
 Plug 'tpope/vim-commentary'
-" Plug 'dense-analysis/ale'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tpope/vim-fugitive'
 Plug 'Yggdroot/indentLine'
@@ -32,22 +28,53 @@ Plug 'chriskempson/base16-vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'lervag/vimtex'
 Plug 'SirVer/ultisnips'
+Plug 'mengelbrecht/lightline-bufferline'
+Plug 'drzel/vim-line-no-indicator'
+Plug 'RRethy/vim-illuminate'
+Plug 'romainl/vim-cool'
+" Plug 'camspiers/animate.vim'
+" Plug 'camspiers/lens.vim'
+" Plug 'dense-analysis/ale'
 call plug#end()
+
+let g:CoolTotalMatches = 1
 
 " Lightline
 set laststatus=2
+set showtabline=2
+let g:lightline#bufferline#show_number = 2
+autocmd BufEnter * if len(getbufinfo({'buflisted':1})) > 1 
+    \ | set showtabline=2 | else 
+    \ | set showtabline=1 | endif
 
 let g:lightline = {
+    \ 'colorscheme': 'molokai',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \           [ 'gitbranch', 'filename', 'modified' ] ],
-    \   'right': [ [ 'lineinfo', 'percent' ] ]
+    \   'right': [ [ 'lineinfo', 'indicator' ] ]
+    \ },
+    \ 'inactive': {
+    \   'right': [ [ 'lineinfo', 'indicator', 'percent' ] ]
+    \ },
+    \ 'tabline': {
+    \   'left': [ [ 'buffers' ] ],
+    \   'right': [ [ 'close' ] ]
     \ },
     \ 'component_function': {
     \   'gitbranch': 'FugitiveHead'
     \ },
-    \ 'colorscheme': 'molokai'
+    \ 'component_expand': {
+    \   'buffers': 'lightline#bufferline#buffers'
+    \ },
+    \ 'component_type': {
+    \   'buffers': 'tabsel'
+    \ },
+    \ 'component': {
+    \   'indicator': '%{LineNoIndicator()}'
     \ }
+    \ }
+
 
 " Vim plug
 nnoremap <leader>pi :PlugInstall<CR>
@@ -71,7 +98,7 @@ let g:mucomplete#completion_delay = 1
 let g:mucomplete#no_popup_mappings = 0
 
 " Illuminate
-let g:Illuminate_delay = 800
+let g:Illuminate_delay = 1500
 autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline
 
 " Easy align
@@ -82,6 +109,9 @@ nnoremap ga <Plug>(EasyAlign)
 set rtp+=~/.fzf
 nnoremap <leader>fc :FZF<CR>
 nnoremap <leader>ff :FZF 
+nnoremap <leader>fg :call fzf#run({'source': 'git ls-files', 
+    \ 'sink': 'e', 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true }})<CR>
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true } }
 let g:fzf_action = {
       \ 'ctrl-s': 'split',
       \ 'ctrl-v': 'vsplit'
@@ -267,21 +297,33 @@ nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bp :bp<CR>
 nnoremap <leader>bd :bd<CR>
 nnoremap <leader>b! :bd!<CR>
-nnoremap <leader>bl :ls<CR>
 
-nnoremap <leader>b1 :b1<CR>
-nnoremap <leader>b2 :b2<CR>
-nnoremap <leader>b3 :b3<CR>
-nnoremap <leader>b4 :b4<CR>
-nnoremap <leader>b5 :b5<CR>
-nnoremap <leader>b6 :b6<CR>
-nnoremap <leader>b7 :b7<CR>
-nnoremap <leader>b8 :b8<CR>
-nnoremap <leader>b9 :b9<CR>
+" buffer switch and delete mappings for oridnal number
+nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+nmap <Leader>9 <Plug>lightline#bufferline#go(9)
+nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+
+nmap <Leader>b1 <Plug>lightline#bufferline#delete(1)
+nmap <Leader>b2 <Plug>lightline#bufferline#delete(2)
+nmap <Leader>b3 <Plug>lightline#bufferline#delete(3)
+nmap <Leader>b4 <Plug>lightline#bufferline#delete(4)
+nmap <Leader>b5 <Plug>lightline#bufferline#delete(5)
+nmap <Leader>b6 <Plug>lightline#bufferline#delete(6)
+nmap <Leader>b7 <Plug>lightline#bufferline#delete(7)
+nmap <Leader>b8 <Plug>lightline#bufferline#delete(8)
+nmap <Leader>b9 <Plug>lightline#bufferline#delete(9)
+nmap <Leader>b0 <Plug>lightline#bufferline#delete(10)
 
 " vimrc
 nnoremap <leader>r :source ~/.vimrc<CR>
-nnoremap <leader>s :e ~/.vimrc<CR>
+nnoremap <leader>v :e ~/.vimrc<CR>
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                    vimdiff                                   "
