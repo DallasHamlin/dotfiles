@@ -17,11 +17,6 @@ if [ ${USER} == "dhamlin1" ]; then
     source ~/dotfiles_work/.work_include.sh
 fi
 
-export FZF_DEFAULT_OPTS='
---color fg:252,bg:233,hl:67,fg+:252,bg+:235,hl+:81
---color info:144,prompt:161,spinner:135,pointer:135,marker:118
-'
-
 # change ls colors
 export LS_COLORS='di=36:ln=1;33:so=32:pi=33:ex=31:bd=32;40:cd=32;40:su=33;40:sg=33;40:tw=34;40:ow=34;40'
 

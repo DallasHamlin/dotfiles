@@ -113,6 +113,8 @@ sed -i 's/ni/n/g' $HOME/.vim/plugged/CommentFrame.vim/plugin/CommentFrame.vim
 #conda install -c conda-forge tmux
 #conda install -c conda-forge bash
 #conda install -c conda-forge pip
+#conda install -c conda-forge fzf
+#conda install -c conda-forge bat
 
 #------------------------------------------------------------------------------#
 #                                     work                                     #

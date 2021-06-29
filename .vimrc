@@ -10,7 +10,7 @@ filetype plugin indent on   "load plugin and indent files
 "                                    Plugins                                   "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 call plug#begin('~/.vim/plugged')
-Plug 'preservim/nerdtree'
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'itchyny/lightline.vim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -31,15 +31,15 @@ Plug 'SirVer/ultisnips'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'drzel/vim-line-no-indicator'
 Plug 'RRethy/vim-illuminate'
-Plug 'romainl/vim-cool'
+Plug 'google/vim-searchindex'
 " Plug 'camspiers/animate.vim'
 " Plug 'camspiers/lens.vim'
 " Plug 'dense-analysis/ale'
 call plug#end()
 
-let g:CoolTotalMatches = 1
-
-" Lightline
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                            Lightline Configuration                           "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 set laststatus=2
 set showtabline=2
 let g:lightline#bufferline#show_number = 2
@@ -75,8 +75,9 @@ let g:lightline = {
     \ }
     \ }
 
-
-" Vim plug
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                            Vim Plug Configuration                            "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 nnoremap <leader>pi :PlugInstall<CR>
 nnoremap <leader>pu :PlugUpdate<CR>
 nnoremap <leader>pg :PlugUpgrade<CR>
@@ -84,10 +85,14 @@ nnoremap <leader>ps :PlugStatus<CR>
 nnoremap <leader>pd :PlugDiff<CR>
 nnoremap <leader>pc :PlugClean<CR>
 
-" Lens
-let g:lens#disabled_filetypes = ['nerdtree', 'fzf']
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                              Lens Configuration                              "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+let g:lens#disabled_filetypes = ['fzf']
 
-" Mucomplete
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                           MuComplete Configuration                           "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 set completeopt-=preview
 set completeopt+=menuone
 set completeopt+=noselect
@@ -97,36 +102,47 @@ let g:mucomplete#enable_auto_at_startup = 1
 let g:mucomplete#completion_delay = 1
 let g:mucomplete#no_popup_mappings = 0
 
-" Illuminate
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                           Illuminate Configuration                           "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 let g:Illuminate_delay = 1500
 autocmd VimEnter * hi illuminatedWord cterm=underline gui=underline
 
-" Easy align
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                           Easy Align Configuration                           "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 xmap ga <Plug>(EasyAlign)
 nnoremap ga <Plug>(EasyAlign)
 
-" FZF   
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                               FZF Configuratino                              "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 set rtp+=~/.fzf
-nnoremap <leader>fc :FZF<CR>
-nnoremap <leader>ff :FZF 
-nnoremap <leader>fg :call fzf#run({'source': 'git ls-files', 
-    \ 'sink': 'e', 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true }})<CR>
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'relative': v:true } }
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fh :Files ~<CR>
+nnoremap <leader>F  :Rg<CR>
+nnoremap <leader>fg :GFiles<CR>
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
+" let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_preview_window = ['right:50%','F1']
 let g:fzf_action = {
       \ 'ctrl-s': 'split',
       \ 'ctrl-v': 'vsplit'
   \ }
+let $FZF_DEFAULT_OPTS='--color fg:252,bg:233,hl:67,fg+:252,bg+:235,hl+:81
+    \ --color info:144,prompt:161,spinner:135,pointer:135,marker:118
+    \ --ansi'
+" To find hidden files
+"let $FZF_DEFAULT_COMMAND = 'find . -type f -not -path "*/\.git/*" 
+"    \ -not -path "*/\.ssh/*" -not -path "*/\.config/*"
+"    \ -not -path "*/\.local/*" -not -path "*/\.cache/*"
+"    \ -not -path "*/\.vim/*"
+"    \ -printf "%P\\n"'
 
-" NerdTree
-nnoremap <leader>ne :NERDTreeToggle<CR>
-" enable these two to automatically enable NerdTree upon entering a vim file
-" autocmd vimenter * NERDTree
-" autocmd vimenter * wincmd p
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-"let NERDTreeMinimalUI = 1
-"let NERDTreeDirArrows = 1
 
-" Fugitive
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                            Fugitive Configuration                            "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 set previewheight=100
 nnoremap <leader>gs  :Git<CR>:only<CR>
 nnoremap <leader>gp  :Git push <CR>
@@ -143,7 +159,9 @@ nnoremap <leader>gdh  :diffget //2 <CR>
 nnoremap <leader>gdl  :diffget //3 <CR>
 au! BufEnter COMMIT_EDITMSG exec 'norm gg' | startinsert!
 
-" Vimtex
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                             Vimtex Configuration                             "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 let g:vimtex_view_general_viewer="zathura"
 let g:tex_flavor="latex"
 let g:vimtex_quickfix_mode=2
@@ -152,7 +170,9 @@ set conceallevel=2
 let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
 let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
 
-" ultisnips
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                            UltiSnips Configuration                           "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
@@ -162,9 +182,8 @@ nnoremap <leader>ua :UltiSnipsEdit all<CR>
 nnoremap <leader>ul :UltiSnipsEdit tex<CR>
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"                                    Colors                                    "
+"                              Color Configuration                             "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-" color options
 set t_Co=256
 let &t_8f = "\<Esc>[38:2:%lu:%lu:%lum"
 let &t_8b = "\<Esc>[48:2:%lu:%lu:%lum"
@@ -249,8 +268,13 @@ if has("autocmd")
 endif
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-"                                   Keybinds                                   "
+"                               General Keybinds                               "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+" Exit keybinds
+nnoremap <leader>q :qa!<CR>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>x :wq<CR>
+
 " Normal mode keybinds
 " Resize splits
 " nnoremap <C-S-J> <C-W>+<CR>
@@ -258,12 +282,6 @@ endif
 
 " leader space fix
 nnoremap <SPACE> <Nop>
-
-" exiting/saving file
-nnoremap <leader>q :q<CR>
-nnoremap <leader>! :q!<CR>
-nnoremap <leader>w :w<CR>
-nnoremap <leader>x :wq<CR>
 
 " term
 nnoremap <leader>t :term<CR>
@@ -292,7 +310,13 @@ nnoremap <leader>mr <C-w>r
 nnoremap <leader>K <C-w>8+<CR>
 nnoremap <leader>J <C-w>8-<CR>
 
-" buffer mappings
+" vimrc
+nnoremap <leader>r :source ~/.vimrc<CR>
+nnoremap <leader>v :e ~/.vimrc<CR>
+
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                                Buffer Keybinds                               "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 nnoremap <leader>bn :bn<CR>
 nnoremap <leader>bp :bp<CR>
 nnoremap <leader>bd :bd<CR>
@@ -320,10 +344,6 @@ nmap <Leader>b7 <Plug>lightline#bufferline#delete(7)
 nmap <Leader>b8 <Plug>lightline#bufferline#delete(8)
 nmap <Leader>b9 <Plug>lightline#bufferline#delete(9)
 nmap <Leader>b0 <Plug>lightline#bufferline#delete(10)
-
-" vimrc
-nnoremap <leader>r :source ~/.vimrc<CR>
-nnoremap <leader>v :e ~/.vimrc<CR>
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                    vimdiff                                   "
