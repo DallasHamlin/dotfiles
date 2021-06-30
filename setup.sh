@@ -119,7 +119,7 @@ sed -i 's/ni/n/g' $HOME/.vim/plugged/CommentFrame.vim/plugin/CommentFrame.vim
 #------------------------------------------------------------------------------#
 #                                     work                                     #
 #------------------------------------------------------------------------------#
-if [ ${USER} == "dhamlin1" ]; then
+if [ ${USER} == "hamlindw"]; then
     source ~/dotfiles_work/.work_setup.sh
 fi
 

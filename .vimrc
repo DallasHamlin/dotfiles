@@ -32,6 +32,7 @@ Plug 'mengelbrecht/lightline-bufferline'
 Plug 'drzel/vim-line-no-indicator'
 Plug 'RRethy/vim-illuminate'
 Plug 'google/vim-searchindex'
+Plug 'pineapplegiant/spaceduck'
 " Plug 'camspiers/animate.vim'
 " Plug 'camspiers/lens.vim'
 " Plug 'dense-analysis/ale'
@@ -48,7 +49,7 @@ autocmd BufEnter * if len(getbufinfo({'buflisted':1})) > 1
     \ | set showtabline=1 | endif
 
 let g:lightline = {
-    \ 'colorscheme': 'molokai',
+    \ 'colorscheme': 'spaceduck',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \           [ 'gitbranch', 'filename', 'modified' ] ],
@@ -203,7 +204,10 @@ let g:gruvbox_hls_cursor = 'purple'
 
 " Summerfruit
 let base16colorspace=256
-colorscheme base16-summerfruit-dark
+" colorscheme base16-summerfruit-dark
+
+" Spaceduck
+colorscheme spaceduck
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                                    General                                   "
@@ -271,7 +275,7 @@ endif
 "                               General Keybinds                               "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 " Exit keybinds
-nnoremap <leader>q :qa!<CR>
+nnoremap <leader>q :q<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>x :wq<CR>
 

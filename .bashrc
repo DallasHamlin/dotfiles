@@ -13,7 +13,7 @@ export RISCV=/tools/risc-v
 export EDITOR='vim'
 export VISUAL='vim'
 
-if [ ${USER} == "dhamlin1" ]; then
+if [ ${USER} == "hamlindw" ]; then
     source ~/dotfiles_work/.work_include.sh
 fi
 
@@ -59,21 +59,6 @@ NC="\e[m"               # Color Reset
 git_branch() {
       git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/dhamlin1/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/dhamlin1/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/dhamlin1/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/dhamlin1/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 # get rid of base in the prompt by setting PS1 last
 PS1="\[\033[0;35m\]\w\[\033[00m\]\[\033[0;37m\] [\$(git_branch)]\[\033[00m\]\[\033[0;35m\]$\[\033[00m\] "
