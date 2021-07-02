@@ -10,19 +10,22 @@ filetype plugin indent on   "load plugin and indent files
 "                                    Plugins                                   "
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 call plug#begin('~/.vim/plugged')
-Plug 'junegunn/fzf.vim'
+
+if version > 800
+    Plug 'cometsong/CommentFrame.vim'
+endif
+
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/vim-easy-align'
-Plug 'cometsong/CommentFrame.vim'
 Plug 'zhou13/vim-easyescape'
 Plug 'morhetz/gruvbox'
 Plug 'lifepillar/vim-mucomplete'
 Plug 'tpope/vim-commentary'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tpope/vim-fugitive'
-Plug 'Yggdroot/indentLine'
 Plug 'sheerun/vim-polyglot'
 Plug 'chriskempson/base16-vim'
 Plug 'tpope/vim-unimpaired'
@@ -30,13 +33,19 @@ Plug 'lervag/vimtex'
 Plug 'SirVer/ultisnips'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'drzel/vim-line-no-indicator'
-Plug 'RRethy/vim-illuminate'
 Plug 'google/vim-searchindex'
-Plug 'pineapplegiant/spaceduck'
+Plug 'pineapplegiant/spaceduck', { 'branch': 'dev' }
+" Plug 'Yggdroot/indentLine'
+" Plug 'RRethy/vim-illuminate'
 " Plug 'camspiers/animate.vim'
 " Plug 'camspiers/lens.vim'
 " Plug 'dense-analysis/ale'
 call plug#end()
+
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                        Line No Indicator Configuration                       "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+let g:line_no_indicator_chars = ['⎺⎺', '⎻⎻', '──', '⎼⎼', '⎽⎽']
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                            Lightline Configuration                           "
@@ -52,7 +61,7 @@ let g:lightline = {
     \ 'colorscheme': 'spaceduck',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
-    \           [ 'gitbranch', 'filename', 'modified' ] ],
+    \           [ 'gitbranch', 'relativepath', 'modified' ] ],
     \   'right': [ [ 'lineinfo', 'indicator' ] ]
     \ },
     \ 'inactive': {
@@ -130,9 +139,6 @@ let g:fzf_action = {
       \ 'ctrl-s': 'split',
       \ 'ctrl-v': 'vsplit'
   \ }
-let $FZF_DEFAULT_OPTS='--color fg:252,bg:233,hl:67,fg+:252,bg+:235,hl+:81
-    \ --color info:144,prompt:161,spinner:135,pointer:135,marker:118
-    \ --ansi'
 " To find hidden files
 "let $FZF_DEFAULT_COMMAND = 'find . -type f -not -path "*/\.git/*" 
 "    \ -not -path "*/\.ssh/*" -not -path "*/\.config/*"
@@ -198,12 +204,12 @@ highlight CursorLineNr term=bold ctermfg=Yellow gui=bold guifg=Yellow
 
 " Gruvbox
 let g:gruvbox_contrast_light = 'soft'
-let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_contrast_dark = 'dark'
 let g:gruvbox_hls_cursor = 'purple'
 " colorscheme gruvbox
 
 " Summerfruit
-let base16colorspace=256
+" let base16colorspace=256
 " colorscheme base16-summerfruit-dark
 
 " Spaceduck
@@ -215,7 +221,7 @@ colorscheme spaceduck
 " General
 set wildmenu        "shows tab completion options in status bar
 set number          "line number
-set belloff=all     "disable bell sound
+" set belloff=all     "disable bell sound
 set encoding=utf-8  "common encoding option
 set equalalways     "windows are made the same size after splitting
 set ttyfast         "improves rendering
@@ -237,18 +243,15 @@ set ruler           "show cursor position in the status bar
 
 " Searching
 set hlsearch        "highlights all search patterns
-"highlight Search ctermbg=LightYellow ctermfg=Black
 set incsearch       "shows what matches as you type the phrase to be searched
 set ignorecase      "case insensitive search (use '\C' for case sensitive)
 set smartcase       "overrides ignorecase if capital letters present
 set showmatch       "shows matching bracket when bracket is inserted
+set cursorline nu   "highlight current line number
 
 " Cursor motion
 set scrolloff=3                 "min num of screen lines to keep above and below the cursor        
 set backspace=indent,eol,start  "allow backspacing over everything in insert mode
-
-" color the line number
-"highlight LineNr term=bold cterm=NONE ctermfg=blue ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
 " Show relative line numbers in normal mode
 " Show actual line numbers in insert mode
