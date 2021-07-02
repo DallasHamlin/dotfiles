@@ -62,11 +62,6 @@
     d       = diff
     dc      = diff --cached
 
-    # clone
-
-[core]
-	editor = ~/miniconda3/bin/vim
-
 [diff]
     tool    = vimdiff
 
@@ -91,7 +86,5 @@
 	clean = sed "/#gitignore$/d"
 	smudge = cat
 [user]
-	name = DallasHamlin
-	email = DallasHamlin@users.noreply.github.com
 [status]
 	showUntrackedFiles = no
