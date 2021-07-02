@@ -77,7 +77,7 @@ alias sc='source'
 
 # Tmux
 alias tmux_conf='vim ~/.tmux.conf'
-alias tmux="tmux new-session \; send-keys 'clear' C-m"
+alias tmux="tmux -2"
 
 # Git
 alias gitconfig='vim ~/.gitconfig'
