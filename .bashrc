@@ -72,4 +72,4 @@ git_branch() {
 
 # get rid of base in the prompt by setting PS1 last
 # PS1="\[\033[0;35m\]\w\[\033[00m\]\[\033[0;37m\] [\$(git_branch)]\[\033[00m\]\[\033[0;35m\]$\[\033[00m\] "
-PS1="${BRed}${CUR_HOST} ${NC}${Purple}\w${NC} ${White}[\$(git_branch)]${NC}${Purple}$ ${NC}"
+PS1="${BRed}${CUR_HOST}${NC}${White} [${NC}${Purple}\w${NC}${White}] ${Yellow}(\$(git_branch))${NC}\n${Purple}$ ${NC}"

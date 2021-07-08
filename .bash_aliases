@@ -82,6 +82,8 @@ alias tmux="tmux -2"
 # Git
 alias gitconfig='vim ~/.gitconfig'
 alias gs='vim +Git +only'
+alias gdv='vim -c "Gvdiffsplit origin"'
+alias gdh='vim -c "Gdiffsplit origin"'
 function gsu()
 {
     git config --local status.showUntrackedFiles all &&
@@ -94,4 +96,4 @@ alias py='python'
 alias py3='python3'
 
 # Miscellaneous
-alias shrug='echo -e "\n¯\_(O_o)_/¯\n"'
+alias shrug='echo -e "\n\_(O_o)_/\n"'
