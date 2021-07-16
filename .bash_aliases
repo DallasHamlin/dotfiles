@@ -67,10 +67,10 @@ function fox() {
 }
 
 # Shell / dotfiles
-alias vimrc='vim ~/.vimrc'
-alias bashrc='vim ~/.bashrc'
-alias bash_alias='vim ~/.bash_aliases'
-alias load_bash='source ~/.bashrc'
+alias vimrc='vim ~/dotfiles/.vimrc'
+alias bashrc='vim ~/dotfiles/.bashrc'
+alias bash_alias='vim ~/dotfiles/.bash_aliases'
+alias load_bash='source ~/dotfiles/.bashrc'
 alias dot='cd ~/dotfiles'
 alias dotw='cd ~/dotfiles_work'
 alias sc='source'
@@ -81,13 +81,13 @@ alias tmux="tmux -2"
 
 # Git
 alias gitconfig='vim ~/.gitconfig'
-alias gs='vim +Git +only'
+alias gs='vim -c "Gstatus | wincmd o"'
 alias gdv='vim -c "Gvdiffsplit origin"'
 alias gdh='vim -c "Gdiffsplit origin"'
 function gsu()
 {
     git config --local status.showUntrackedFiles all &&
-    vim +Git +only &&
+    vim -c "Gstatus | wincmd o" &&
     git config --local status.showUntrackedFiles no
 }
 
