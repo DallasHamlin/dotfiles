@@ -33,12 +33,33 @@ Plug 'lervag/vimtex'
 Plug 'SirVer/ultisnips'
 Plug 'mengelbrecht/lightline-bufferline'
 Plug 'google/vim-searchindex'
+Plug 'edkolev/tmuxline.vim'
 " Plug 'Yggdroot/indentLine'
 " Plug 'RRethy/vim-illuminate'
 " Plug 'camspiers/animate.vim'
 " Plug 'camspiers/lens.vim'
 " Plug 'dense-analysis/ale'
 call plug#end()
+
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+"                            Tmuxline Configuration                            "
+"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+let g:tmuxline_powerline_separators = 0
+let g:tmuxline_separators = {
+    \ 'left' : '',
+    \ 'left_alt': '>',
+    \ 'right' : '',
+    \ 'right_alt' : '<',
+    \ 'space' : ' '}
+let g:tmuxline_preset = {
+        \'a'    : '$NAME',
+        \'b'    : '#W',
+        \'c'    : '',
+        \'win'  : '',
+        \'cwin' : '',
+        \'x'    : '',
+        \'y'    : '',
+        \'z'    : ['%R', '%a', '%Y']}
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 "                            Lightline Configuration                           "
@@ -323,7 +344,7 @@ nnoremap <leader>b! :bd!<CR>
 if &diff
     syntax off
     " enable to ignore whitespace
-    " set diffopt+=iwhite
+    set diffopt+=iwhite
 
     " vimdiff colors - good for gruvbox
     " hi DiffAdd      ctermfg=White   ctermbg=Brown
